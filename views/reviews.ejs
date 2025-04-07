@@ -1,0 +1,26 @@
+<!-- reviews.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Reviews</title>
+</head>
+<body>
+  <h1>Movie Reviews</h1>
+
+  <% if (reviews.length > 0) { %>
+    <% reviews.forEach(review => { %>
+      <% const movie = movies.find(m => m.id == review.movieId); %>
+      <div class="review">
+        <h3><%= movie ? movie.title : 'Unknown Movie' %></h3>
+        <p>Rating: <%= review.rating %>/5</p>
+        <p><%= review.review %></p>
+      </div>
+    <% }); %>
+  <% } else { %>
+    <p>No reviews yet.</p>
+  <% } %>
+
+</body>
+</html>
